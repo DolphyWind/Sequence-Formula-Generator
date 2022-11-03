@@ -15,7 +15,7 @@ def main():
 
     print('Input your coordinates like this: "x y" (Input nothing to stop inputting.)')
     while True:
-        inp = input('')
+        inp = input('>>>')
         if not inp:
             break
         xCoord, yCoord = inp.split()
@@ -30,9 +30,10 @@ def main():
         xk = xCoords[k]
         output += coordDict[xk] * (x - xk + 1) * ignoreableMultiplicator(x, 0, N, k, xCoords) / ignoreableMultiplicator(xk, 0, N, k, xCoords)
 
+    print('Unsimplified: ' + str(output).replace('**', '^'))
     output = sympy.simplify(output)
     output = str(output)
-    print(output.replace('**', '^'))
+    print("Simplified: " + output.replace('**', '^'))
 
 
 if __name__ == '__main__':
