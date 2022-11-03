@@ -1,2 +1,3 @@
 # Sequence-Formula-Generator
-Simple formula generator in python. Uses Gregory-Newton method.
+
+Two ways to generate formulas for sequences. Unfortunately I can't do anything about floating point arithmetic errors.
