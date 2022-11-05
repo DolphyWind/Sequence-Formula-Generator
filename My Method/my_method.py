@@ -1,5 +1,6 @@
 import sympy
 from math import *
+import sys
 
 def ignoreableMultiplicator(x, start, finish, ignore, xCoords):
     result = 1
@@ -12,6 +13,10 @@ def ignoreableMultiplicator(x, start, finish, ignore, xCoords):
 def main():
     x = sympy.Symbol('x')
     coordDict = dict()
+
+    arbitraryExponent = 0
+    if len(sys.argv) != 1:
+        arbitraryExponent = int(sys.argv[1])
 
     print('Input your coordinates like this: "x y" (Input nothing to stop inputting.)')
     while True:
@@ -28,7 +33,7 @@ def main():
 
     for k in range(N):
         xk = xCoords[k]
-        output += coordDict[xk] * (x - xk + 1) * ignoreableMultiplicator(x, 0, N, k, xCoords) / ignoreableMultiplicator(xk, 0, N, k, xCoords)
+        output += coordDict[xk] * ((x - xk + 1)**arbitraryExponent) * ignoreableMultiplicator(x, 0, N, k, xCoords) / ignoreableMultiplicator(xk, 0, N, k, xCoords)
 
     print('Unsimplified: ' + str(output).replace('**', '^'))
     output = sympy.simplify(output)
